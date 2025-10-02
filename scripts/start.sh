@@ -21,6 +21,9 @@ if [ "$AUTO_PUBLISH" = "true" ]; then
   if [ -n "$PUBLISHED_DID" ]; then
     echo "Published feed with DID: $PUBLISHED_DID"
     export FEEDGEN_PUBLISHER_DID="$PUBLISHED_DID"
+
+    echo "$PUBLISHED_DID" > /shared/publisher-did.txt
+    echo "Wrote publisher DID to /shared/publisher-did.txt"
   fi
 fi
 
