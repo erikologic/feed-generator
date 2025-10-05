@@ -1,8 +1,7 @@
 import { QueryParams } from '../lexicon/types/app/bsky/feed/getFeedSkeleton'
 import { AppContext } from '../config'
 
-// max 15 chars
-export const shortname = 'whats-alf'
+export const shortname = 'whats-hot'
 
 export const handler = async (ctx: AppContext, params: QueryParams) => {
   let builder = ctx.db
@@ -10,7 +9,7 @@ export const handler = async (ctx: AppContext, params: QueryParams) => {
     .selectAll()
     .orderBy('indexedAt', 'desc')
     .orderBy('cid', 'desc')
-    .limit(params.limit)
+    .limit(params.limit || 10)
 
   if (params.cursor) {
     const timeStr = new Date(parseInt(params.cursor, 10)).toISOString()
